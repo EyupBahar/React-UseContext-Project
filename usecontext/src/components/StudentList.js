@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import StudentItem from './StudentItem'
+import { StudentContext } from '../context/StudentContext'
 
 const StudentList = () => {
+  const { students } = useContext(StudentContext);
   return (
     <>
       <h2>Student List</h2>
@@ -11,4 +14,4 @@ const StudentList = () => {
   )
 }
 
-export default  
+export default StudentList
