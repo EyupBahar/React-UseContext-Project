@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import StudentList from './components/StudentList'
 
-function App() {
+const data = [
+  { id: 1, name: 'Jason Response', email: 'jason@mail.com', age: 23, color: 'lightcyan' },
+  { id: 2, name: 'Benjamin Evalent', email: 'benjamin@mail.com', age: 20, color: 'honeydew' },
+  { id: 3, name: 'Malcolm Function', email: 'malcolm@mail.com', age: 21, color: 'mistyrose' }
+]
+
+const App = () => {
+  const [students, setStudents] = useState(data)
+
+  const changeColor = (id, color) =>
+    setStudents(students.map((student) => (student.id === id ? { ...student, color: color } : student)))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App">
+        <header>
+          <h1>Welcome!</h1>
+        </header>
+        <StudentList students={students} changeColor={changeColor}  />
+      </div>
+  )
 }
 
-export default App;
+export default App
